@@ -1,0 +1,84 @@
+11/09/2019 - Jed Delmiguez
+This is my written Git guide based on Corey Schafer's Git Tutorial on YouTube.
+#------
+Install Git - Google it or go to git site to download
+First Time Setup
+ - Check git version with (git --version) from the terminal
+
+Set Config Values - Enter in terminal
+ - git config --global user.name "Jed Delmiguez"
+ - git config --global user.email "jdelmiguez@gmail.com"
+ - git config --list
+
+Git Help
+ - git help <verb> i.e. git help config
+ - git <verb> --help i.e. git config --help
+
+Getting Started - Two Common Scenarios for use
+ - Local
+    - Initialise a repository from existing code
+        - git init (in the directory you want to start tracking. A .git directory is created)
+        - rm -rf .git (to simply remove the git tracking)
+        - git status (to check what is not tracked)
+        - touch .gitignore (to create a file where you specify the files or folders you want git to ignore)
+            - example entries (.DS_Store .project *.pyc)
+        - git status again
+        (Git has Working Directory, Staging Area and Repository (.git directory))
+        - git add -A (to add all files in the directory to the Staging area)
+        - git add filename (to add individual files)
+        - git reset (to remove all files from the Staging Area)
+        - git reset filename (to remove specific file)
+        - git add -A
+        - git commit -m "Enter the detailed and meaningful message."
+        - git log (to check what was committed)
+ - Remote
+    - Cloning a remote repository
+        - git clone <url> <where to clone> (git clone ../remote_repo.git .)
+    - Viewing information about the remote repository
+        - git remote -v (list the information to the repository)
+        - git branch -a (list all of the branches of the repository not only remotely but also locally)
+
+Pushing Changes
+     - Commit changes like previous steps
+        - git diff (shows the changes made to the code)
+        - git status
+        - git add -A
+        - git commit -m "Enter another meaningful message here about the change."
+     - Then Push
+        - git pull origin master
+        - git push origin master
+
+COMMON WORKFLOW
+    - Create a branch for desired feature
+        - git branch calc-divide (to create this branch which in this case named 'calc-divide')
+        - git checkout calc-divide (checkout the created branch to work on that branch only)
+        - git branch (Whatever branch has the asterisk is the current working branch i.e. *master)
+      *Perform the following again to make changes
+        - git status
+        - git commit -m "Describe the change being made as meaningful as you can."
+
+    - After commit, push branch to remote
+        - git push -u origin calc-divide (or whatever you named your branch as)
+        - git branch -a
+      *Once push -u has been ran then you can do commands like the below (-u is to associate local and remote branch
+        - git pull
+        - git push
+
+    - Merge a branch
+        - git checkout master
+        - git pull origin master
+        - git branch --merged
+        - git merge calc-divide
+        - git push origin master
+        - git checkout master
+        - git pull origin master
+
+    - Deleting a branch
+        - git branch --merged
+        - git branch -d calc-divide
+        - git branch -a
+        - git push origin --delete calc-divide
+
+
+
+
